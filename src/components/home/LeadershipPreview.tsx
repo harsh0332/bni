@@ -4,7 +4,6 @@ import React from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
-import { PLACEHOLDER } from "@/lib/assets";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -23,29 +22,29 @@ export function LeadershipPreview() {
     {
       name: "Shreyas Bhokardankar",
       role: "President",
-      avatarText: "Shreyas Bhokardankar\nPresident",
+      photo: "/images/team/shreyas-bhokardankar.jpg",
     },
     {
       name: "Priyanka Bhatia",
       role: "Vice President",
-      avatarText: "Priyanka Bhatia\nVice President",
+      photo: "/images/team/priyanka-bhatia.jpg",
     },
     {
       name: "Dushyant Mangal",
       role: "Secretary / Treasurer",
-      avatarText: "Dushyant Mangal\nSecretary/Treasurer",
+      photo: "/images/team/dushyant-mangal.jpg",
     },
     {
       name: "Sumit Bohare",
       role: "Membership Committee",
-      avatarText: "Sumit Bohare\nMembership",
+      photo: "/images/team/sumit-bohare.jpg",
     },
   ];
 
   const hoverAnimation = shouldReduceMotion ? {} : { y: -6 };
 
   return (
-    <Section bg="cloud">
+    <Section bg="cloud" id="leadership">
       <Container>
         <Reveal>
           <SectionHeading
@@ -66,10 +65,10 @@ export function LeadershipPreview() {
                 transition={{ type: "spring", stiffness: 350, damping: 20 }}
                 className="bg-white rounded-card overflow-hidden shadow-card border border-black/5 flex flex-col group cursor-default"
               >
-                {/* Avatar Display utilizing PLACEHOLDER */}
+                {/* Avatar Display utilizing REAL TEAM IMAGE */}
                 <div className="relative h-[280px] w-full bg-cloud overflow-hidden">
                   <Image
-                    src={PLACEHOLDER(officer.name.replace(/\s+/g, ""), 300, 280, officer.name)}
+                    src={officer.photo}
                     alt={officer.name}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"

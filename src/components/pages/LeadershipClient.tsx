@@ -4,7 +4,6 @@ import React from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Mail, Phone, ArrowRight, Shield } from "lucide-react";
-import { PLACEHOLDER } from "@/lib/assets";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -21,6 +20,7 @@ export function LeadershipClient() {
       email: "president@bnidreamers.in",
       // TODO: Client to confirm before public display
       phone: "+91 99999 99999",
+      photo: "/images/team/shreyas-bhokardankar.jpg",
     },
     {
       name: "Priyanka Bhatia",
@@ -28,6 +28,7 @@ export function LeadershipClient() {
       email: "vp@bnidreamers.in",
       // TODO: Client to confirm before public display
       phone: "+91 99999 99999",
+      photo: "/images/team/priyanka-bhatia.jpg",
     },
     {
       name: "Dushyant Mangal",
@@ -35,6 +36,7 @@ export function LeadershipClient() {
       email: "treasurer@bnidreamers.in",
       // TODO: Client to confirm before public display
       phone: "+91 99999 99999",
+      photo: "/images/team/dushyant-mangal.jpg",
     },
     {
       name: "Sumit Bohare",
@@ -42,6 +44,7 @@ export function LeadershipClient() {
       email: "membership@bnidreamers.in",
       // TODO: Client to confirm before public display
       phone: "+91 99999 99999",
+      photo: "/images/team/sumit-bohare.jpg",
     },
   ];
 
@@ -92,10 +95,10 @@ export function LeadershipClient() {
                   transition={{ type: "spring", stiffness: 350, damping: 20 }}
                   className="bg-cloud rounded-card overflow-hidden shadow-card border border-black/5 flex flex-col group cursor-default"
                 >
-                  {/* Portrait photo using PLACEHOLDER */}
+                  {/* Portrait photo using REAL TEAM IMAGE */}
                   <div className="relative h-[300px] w-full bg-slate-100 overflow-hidden">
                     <Image
-                      src={PLACEHOLDER(officer.name.replace(/\s+/g, ""), 300, 300, officer.name)}
+                      src={officer.photo}
                       alt={officer.name}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"

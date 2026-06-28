@@ -16,16 +16,18 @@ export function MembersClient() {
 
   const members = [
     { name: "Manish Bagdi", classification: "Home Theatre" },
-    { name: "Vinod Verma", classification: "Commercial Realtor" },
+    { name: "Vinod Verma", classification: "Commercial Realtor", photo: "/images/team/vinod-verma.jpg" },
     { name: "Ravi Navlani", classification: "Veneer & Teak Wood (Wood House)" },
-    { name: "Poonam Patidar", classification: "Modular Furniture" },
-    { name: "Priyanka Bhatia", classification: "Insurance" },
-    { name: "Keshav Rathi", classification: "Financial Advisory" },
-    { name: "Santosh Prasad", classification: "Software Solutions" },
-    { name: "Rohan Verma", classification: "Interior Design" },
-    { name: "Rohit Dinkar", classification: "Architecture" },
-    { name: "Abhishek Singh Rajawat", classification: "Logistics Services" },
-    { name: "Shruti Maheshwari", classification: "Graphic Design" },
+    { name: "Poonam Patidar", classification: "Modular Furniture", photo: "/images/team/poonam-patidar.jpg" },
+    { name: "Priyanka Bhatia", classification: "Insurance", photo: "/images/team/priyanka-bhatia.jpg" },
+    { name: "Keshav Rathi", classification: "Financial Advisory", photo: "/images/team/keshav-rathi.jpg" },
+    { name: "Santosh Prasad", classification: "Software Solutions", photo: "/images/team/santosh-prasad.jpg" },
+    { name: "Rohan Verma", classification: "Interior Design", photo: "/images/team/rohan-verma.jpg" },
+    { name: "Rohit Dinkar", classification: "Architecture", photo: "/images/team/rohit-dinkar.jpg" },
+    { name: "Abhishek Singh Rajawat", classification: "Logistics Services", photo: "/images/team/abhishek-singh-rajawat.jpg" },
+    { name: "Shruti Maheshwari", classification: "Graphic Design", photo: "/images/team/shruti-maheshwari.jpg" },
+    { name: "Smriti Singhai", classification: "Charter Member", photo: "/images/team/smriti-singhai.jpg" },
+    { name: "Gavish Jaiswal", classification: "Charter Member", photo: "/images/team/gavish-jaiswal.jpg" },
   ];
 
   const openCategories = [
@@ -94,10 +96,10 @@ export function MembersClient() {
                   transition={{ type: "spring", stiffness: 350, damping: 20 }}
                   className="bg-cloud rounded-card overflow-hidden shadow-card border border-black/5 flex flex-col group cursor-default"
                 >
-                  {/* Portrait photo using PLACEHOLDER */}
+                  {/* Portrait photo */}
                   <div className="relative h-[240px] w-full bg-slate-100 overflow-hidden">
                     <Image
-                      src={PLACEHOLDER(member.name.replace(/\s+/g, ""), 300, 240, member.name)}
+                      src={member.photo || PLACEHOLDER(member.name.replace(/\s+/g, ""), 300, 240, member.name)}
                       alt={member.name}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
