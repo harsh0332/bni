@@ -1,22 +1,30 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { ScrollProvider } from "@/components/ui/ScrollProvider";
 import "./globals.css";
 
-// Headings font setup
-const plusJakartaSans = Plus_Jakarta_Sans({
+// Display headings font setup (Fraunces variable with optical sizing)
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  variable: "--font-headings",
+  axes: ["opsz"],
+  variable: "--font-display",
   display: "swap",
 });
 
-// Body font setup
+// UI body font setup (Inter)
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-body",
+  variable: "--font-sans",
+  display: "swap",
+});
+
+// Technical Mono labels font setup (JetBrains Mono)
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -91,19 +99,24 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <body
-        className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased bg-white min-h-screen flex flex-col`}
+        className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable} font-sans antialiased bg-paper min-h-screen flex flex-col`}
       >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Header />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
+        {/* Subtle global fixed noise texture overlay */}
+        <div className="noise-overlay" aria-hidden="true" />
+
+        <ScrollProvider>
+          <Header />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </ScrollProvider>
       </body>
     </html>
   );

@@ -12,24 +12,25 @@ interface RevealProps {
   staggerChildren?: number;
   stagger?: boolean;
   className?: string;
+  variant?: "fade-up" | "clip-up" | "blur-in";
 }
 
 /**
- * Reveal is a reusable wrapper component that reveals its content as it scrolls into view.
- * It features a fade + 16px rise transition by default and automatically disables physical offset
- * motion when prefers-reduced-motion is enabled by the user.
- * 
- * Set `stagger={true}` to stagger the entry of direct children elements.
+ * Upgraded Reveal component supporting:
+ * - 'fade-up' (standard easeUp movement)
+ * - 'clip-up' (inset wipe reveal)
+ * - 'blur-in' (luxury reveal with scaling and blur effects)
  */
 export function Reveal({
   children,
   width = "full",
   delay = 0,
-  duration = 0.5,
+  duration = 0.6,
   yOffset = 16,
   staggerChildren = 0.08,
   stagger = false,
   className = "",
+  variant = "fade-up",
 }: RevealProps) {
   const shouldReduceMotion = useReducedMotion();
 
@@ -44,21 +45,73 @@ export function Reveal({
     },
   };
 
-  // Variants for individual animated elements
-  const itemVariants: Variants = {
-    hidden: {
-      opacity: 0,
-      y: shouldReduceMotion ? 0 : yOffset,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: duration,
-        ease: [0.16, 1, 0.3, 1], // Premium easeOutExpo
-      },
-    },
+  // Get selected variant configurations
+  const getVariants = (type: "fade-up" | "clip-up" | "blur-in"): Variants => {
+    if (shouldReduceMotion) {
+      return {
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: { duration: duration },
+        },
+      };
+    }
+
+    switch (type) {
+      case "clip-up":
+        return {
+          hidden: {
+            opacity: 0,
+            y: yOffset || 30,
+            clipPath: "inset(100% 0% 0% 0%)",
+          },
+          visible: {
+            opacity: 1,
+            y: 0,
+            clipPath: "inset(0% 0% 0% 0%)",
+            transition: {
+              duration: duration,
+              ease: [0.16, 1, 0.3, 1], // easeOutExpo
+            },
+          },
+        };
+      case "blur-in":
+        return {
+          hidden: {
+            opacity: 0,
+            scale: 0.97,
+            filter: "blur(8px)",
+          },
+          visible: {
+            opacity: 1,
+            scale: 1,
+            filter: "blur(0px)",
+            transition: {
+              duration: duration,
+              ease: [0.16, 1, 0.3, 1],
+            },
+          },
+        };
+      case "fade-up":
+      default:
+        return {
+          hidden: {
+            opacity: 0,
+            y: yOffset,
+          },
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: duration,
+              ease: [0.16, 1, 0.3, 1],
+            },
+          },
+        };
+    }
   };
+
+  const itemVariants = getVariants(variant);
 
   if (stagger) {
     return (
@@ -72,7 +125,7 @@ export function Reveal({
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
             return (
-              <motion.div variants={itemVariants}>
+              <motion.div variants={itemVariants} className={width === "full" ? "w-full" : "w-fit"}>
                 {child}
               </motion.div>
             );
