@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" fill="none">
+  <title>BNI Dreamers — Inner page header banner</title>
+  <defs>
+  <radialGradient id="gRed" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#E8434F"></stop><stop offset="55%" stop-color="#CF2030"></stop><stop offset="100%" stop-color="#A8161F"></stop></radialGradient>
+  <radialGradient id="gMaroon" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#A8161F"></stop><stop offset="60%" stop-color="#7A0D14"></stop><stop offset="100%" stop-color="#560A0F"></stop></radialGradient>
+  <linearGradient id="fadeR" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#FAF8F5" stop-opacity="1"></stop><stop offset="55%" stop-color="#FAF8F5" stop-opacity="0"></stop></linearGradient></defs>
+  <rect width="800" height="500" fill="#FAF8F5"></rect>
+  <g id="network" opacity="0.85"><g stroke-linecap="round"><line x1="493.7" y1="96.1" x2="585.2" y2="229.9" stroke="#CF2030" stroke-width="0.8" stroke-opacity="0.22"></line><line x1="647.2" y1="32.2" x2="493.7" y2="96.1" stroke="#CF2030" stroke-width="0.8" stroke-opacity="0.22"></line><line x1="647.2" y1="32.2" x2="585.2" y2="229.9" stroke="#CF2030" stroke-width="0.8" stroke-opacity="0.22"></line><line x1="757.6" y1="243.5" x2="743.1" y2="400.9" stroke="#C9A24B" stroke-width="0.8" stroke-opacity="0.4"></line><line x1="757.6" y1="243.5" x2="585.2" y2="229.9" stroke="#C9A24B" stroke-width="0.8" stroke-opacity="0.4"></line><line x1="445.3" y1="299.8" x2="585.2" y2="229.9" stroke="#CF2030" stroke-width="0.8" stroke-opacity="0.22"></line><line x1="548.0" y1="421.1" x2="445.3" y2="299.8" stroke="#CF2030" stroke-width="0.8" stroke-opacity="0.22"></line><line x1="548.0" y1="421.1" x2="585.2" y2="229.9" stroke="#CF2030" stroke-width="0.8" stroke-opacity="0.22"></line></g><g><circle cx="493.7" cy="96.1" r="4.3" fill="url(#gRed)" opacity="0.7"></circle><circle cx="647.2" cy="32.2" r="5.4" fill="url(#gRed)" opacity="0.7"></circle><circle cx="757.6" cy="243.5" r="3.5" fill="#0E0E0E" stroke="#C9A24B" stroke-width="0.9" stroke-opacity="1"></circle><circle cx="743.1" cy="400.9" r="6.0" fill="url(#gRed)" opacity="0.7"></circle><circle cx="445.3" cy="299.8" r="4.0" fill="url(#gRed)" opacity="0.7"></circle><circle cx="585.2" cy="229.9" r="3.8" fill="url(#gRed)" opacity="0.7"></circle><circle cx="548.0" cy="421.1" r="6.7" fill="url(#gRed)" opacity="0.7"></circle></g></g>
+  <rect width="800" height="500" fill="url(#fadeR)"></rect>
+  <g id="accents">
+    <line x1="0" y1="499" x2="800" y2="499" stroke="#C9A24B" stroke-width="1.4" stroke-opacity="0.8"></line>
+    <line x1="50" y1="160" x2="50" y2="310" stroke="#C9A24B" stroke-width="1.4"></line>
+  </g>
+</svg>

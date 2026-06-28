@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="24" viewBox="0 0 1200 24" fill="none">
+  <title>Gold hairline divider</title>
+  <line x1="0" y1="12" x2="556" y2="12" stroke="#C9A24B" stroke-width="1" stroke-opacity="0.7"></line>
+  <line x1="644" y1="12" x2="1200" y2="12" stroke="#C9A24B" stroke-width="1" stroke-opacity="0.7"></line>
+  <circle cx="600" cy="12" r="3.2" fill="#CF2030"></circle>
+  <circle cx="600" cy="12" r="6" fill="none" stroke="#C9A24B" stroke-width="0.8" stroke-opacity="0.8"></circle>
+</svg>
