@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <title>Network node</title>
+  <defs>
+  <radialGradient id="gRed" cx="35%" cy="30%" r="75%">
+    <stop offset="0%" stop-color="#E8434F"></stop><stop offset="55%" stop-color="#CF2030"></stop><stop offset="100%" stop-color="#A8161F"></stop>
+  </radialGradient>
+  <radialGradient id="gMaroon" cx="35%" cy="30%" r="75%">
+    <stop offset="0%" stop-color="#A8161F"></stop><stop offset="60%" stop-color="#7A0D14"></stop><stop offset="100%" stop-color="#560A0F"></stop>
+  </radialGradient><radialGradient id="gHalo" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#CF2030" stop-opacity="0.25"></stop><stop offset="100%" stop-color="#CF2030" stop-opacity="0"></stop></radialGradient></defs>
+  <circle cx="32" cy="32" r="28" fill="url(#gHalo)"></circle>
+  <circle cx="32" cy="32" r="9" fill="url(#gRed)"></circle>
+  <circle cx="32" cy="32" r="13" fill="none" stroke="#C9A24B" stroke-width="0.9" stroke-opacity="0.75"></circle>
+</svg>
