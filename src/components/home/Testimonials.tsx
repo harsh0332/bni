@@ -67,6 +67,7 @@ export function Testimonials() {
                       src={test.src}
                       alt={test.name}
                       fill
+                      sizes="56px"
                       className="object-cover"
                     />
                   </div>

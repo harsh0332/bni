@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -54,6 +54,7 @@ export function MeetingProcess() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeStep, setActiveStep] = useState(0);
   const [isMobile, setIsMobile] = useState(true);
+  const shouldReduceMotion = useReducedMotion();
 
   // Scroll tracking for sticky desktop timeline
   const { scrollYProgress } = useScroll({
@@ -73,7 +74,7 @@ export function MeetingProcess() {
 
   // Update active step based on scroll progress (desktop only)
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (isMobile) return;
+    if (isMobile || shouldReduceMotion) return;
     const index = Math.min(Math.floor(latest * 7), 6);
     setActiveStep(index);
   });
@@ -81,7 +82,7 @@ export function MeetingProcess() {
   return (
     <div ref={containerRef} className="relative z-20">
       {/* DESKTOP PINNED VIEW */}
-      {!isMobile && (
+      {!isMobile && !shouldReduceMotion && (
         <div className="hidden md:block">
           {/* Scroll wrapper to give scroll height */}
           <div className="h-[250vh] relative">
@@ -198,8 +199,8 @@ export function MeetingProcess() {
       )}
 
       {/* MOBILE SCROLL VIEW (No pin, standard vertical reveals) */}
-      {isMobile && (
-        <div className="block md:hidden bg-paper py-16 border-t border-black/5">
+      {(isMobile || shouldReduceMotion) && (
+        <div className="bg-paper py-16 border-t border-black/5">
           <Container>
             <Reveal>
               <div className="text-left mb-12">

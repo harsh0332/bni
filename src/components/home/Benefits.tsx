@@ -80,6 +80,7 @@ export function Benefits() {
                     src={benefits[0].image}
                     alt={benefits[0].title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 40vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent pointer-events-none" />
@@ -98,6 +99,7 @@ export function Benefits() {
                       src={benefits[1].image}
                       alt={benefits[1].title}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 30vw, 25vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
@@ -128,6 +130,7 @@ export function Benefits() {
                     src={benefits[2].image}
                     alt={benefits[2].title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 40vw, 30vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-l from-white/10 to-transparent pointer-events-none" />

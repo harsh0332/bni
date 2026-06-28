@@ -232,7 +232,7 @@ export function Hero() {
             {/* Eyebrow kicker with pulsing live indicator dot */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-red/10 border border-brand-red/15 w-fit mb-6">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-red opacity-75"></span>
+                <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-red opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-red"></span>
               </span>
               <span className="font-mono text-[10px] font-bold text-brand-red tracking-widest uppercase select-none">
@@ -292,6 +292,7 @@ export function Hero() {
                 src="/images/team/chapter-group-photo.jpg"
                 alt="BNI Dreamers Indore Group Photo"
                 fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"
                 priority
               />
@@ -304,6 +305,8 @@ export function Hero() {
               viewBox="0 0 500 500"
               className="w-full h-full relative z-20 pointer-events-none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              role="img"
             >
               {/* 1. Base network connection lines */}
               {CONNECTIONS.map((conn, index) => {
@@ -392,8 +395,8 @@ export function Hero() {
 
             {/* Floating Glassmorphic Chapter Profile card */}
             <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              animate={shouldReduceMotion ? {} : { y: [0, -8, 0] }}
+              transition={shouldReduceMotion ? {} : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
               className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 z-30 flex items-center gap-3 bg-white/70 backdrop-blur-md border border-white/40 rounded-2xl px-5 py-4 shadow-float max-w-[280px] pointer-events-none select-none"
             >
               <div className="bg-gold/15 p-2 rounded-xl text-gold shrink-0">

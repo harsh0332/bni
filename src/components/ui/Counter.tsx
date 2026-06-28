@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { useInView } from "framer-motion";
+import { useInView, useReducedMotion } from "framer-motion";
 
 interface CounterProps {
   value: number;
@@ -25,12 +25,19 @@ export function Counter({
   decimals = 0,
   locale = "en-IN",
 }: CounterProps) {
+  const shouldReduceMotion = useReducedMotion();
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   useEffect(() => {
     if (!isInView) return;
+
+    // Immediately show final value for reduced-motion users
+    if (shouldReduceMotion) {
+      setCount(value);
+      return;
+    }
 
     let startTimestamp: number | null = null;
     const end = value;
@@ -52,7 +59,7 @@ export function Counter({
     };
 
     window.requestAnimationFrame(step);
-  }, [value, duration, isInView]);
+  }, [value, duration, isInView, shouldReduceMotion]);
 
   const formattedCount = count.toLocaleString(locale, {
     minimumFractionDigits: decimals,

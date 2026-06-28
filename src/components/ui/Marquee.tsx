@@ -33,8 +33,8 @@ export function Marquee({ items, speed = 25, className = "" }: MarqueeProps) {
   return (
     <div className={`relative overflow-hidden w-full select-none flex py-4 ${className}`}>
       {/* Soft gradient masks to fade the edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-paper via-paper/50 to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-paper via-paper/50 to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white via-white/50 to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white via-white/50 to-transparent z-10 pointer-events-none" />
 
       <div
         className="animate-marquee gap-6 flex shrink-0"
