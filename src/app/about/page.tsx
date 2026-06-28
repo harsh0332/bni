@@ -162,6 +162,27 @@ export default function AboutPage() {
         </Container>
       </Section>
 
+      {/* 2.5 Group Photo Wide Band */}
+      <div className="pb-16 bg-white">
+        <Container>
+          <Reveal>
+            <div className="relative w-full h-[280px] sm:h-[400px] md:h-[500px] rounded-card overflow-hidden shadow-card border border-black/5">
+              <Image
+                src="/images/team/chapter-group-photo.jpg"
+                alt="BNI Dreamers — Indore Chapter Group Photo"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end justify-start p-6 sm:p-10">
+                <p className="font-heading font-extrabold text-lg sm:text-2xl text-white drop-shadow-md">
+                  BNI Dreamers — Indore Chapter
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
+      </div>
+
       {/* 3. How a Meeting Works Timeline */}
       <Section bg="cloud" id="how-it-works">
         <Container>

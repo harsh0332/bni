@@ -18,32 +18,28 @@ export function LeadershipClient() {
       name: "Shreyas Bhokardankar",
       role: "President",
       email: "president@bnidreamers.in",
-      // TODO: Client to confirm before public display
-      phone: "+91 99999 99999",
+      phone: "+91 90960 29339",
       photo: "/images/team/shreyas-bhokardankar.jpg",
     },
     {
       name: "Priyanka Bhatia",
       role: "Vice President",
       email: "vp@bnidreamers.in",
-      // TODO: Client to confirm before public display
-      phone: "+91 99999 99999",
+      phone: "+91 99260 00013",
       photo: "/images/team/priyanka-bhatia.jpg",
     },
     {
       name: "Dushyant Mangal",
       role: "Secretary / Treasurer",
       email: "treasurer@bnidreamers.in",
-      // TODO: Client to confirm before public display
-      phone: "+91 99999 99999",
+      phone: "+91 87705 33410",
       photo: "/images/team/dushyant-mangal.jpg",
     },
     {
       name: "Sumit Bohare",
-      role: "Membership Coordinator",
+      role: "Membership / Registration",
       email: "membership@bnidreamers.in",
-      // TODO: Client to confirm before public display
-      phone: "+91 99999 99999",
+      phone: "+91 95898 93590",
       photo: "/images/team/sumit-bohare.jpg",
     },
   ];

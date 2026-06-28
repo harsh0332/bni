@@ -4,7 +4,6 @@ import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Star } from "lucide-react";
 import Image from "next/image";
-import { ASSETS } from "@/lib/assets";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -78,10 +77,10 @@ export function Hero() {
             {/* Supporting Real Image Card */}
             <div className="absolute inset-4 sm:inset-6 rounded-2xl overflow-hidden border border-black/5 shadow-lg z-10">
               <Image
-                src={ASSETS.heroBetterTogether}
-                alt="BNI Dreamers Indore Meeting"
+                src="/images/team/chapter-group-photo.jpg"
+                alt="BNI Dreamers Indore Chapter Group Photo"
                 fill
-                className="object-cover opacity-30 group-hover:opacity-45 transition-opacity duration-500"
+                className="object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent mix-blend-overlay" />
