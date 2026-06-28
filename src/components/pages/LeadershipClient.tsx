@@ -127,42 +127,42 @@ export function LeadershipClient() {
             {officers.map((officer, i) => (
               <Reveal key={officer.email} delay={i * 0.1}>
                 <TiltCard>
-                  <div className="group bg-cloud rounded-card shadow-card border border-cloud/60 overflow-hidden">
-                    {/* Photo */}
-                    <div className="relative h-[300px] overflow-hidden">
+                  <div className="group bg-cloud rounded-card shadow-card border border-cloud/60 overflow-hidden text-center pb-8 flex flex-col items-center">
+                    {/* Centered Circular Photo */}
+                    <div className="relative w-36 h-36 rounded-full border-2 border-gold/25 mx-auto mt-8 overflow-hidden bg-white shadow-inner group-hover:border-brand-red/40 transition-colors duration-300">
                       <Image
                         src={officer.photo}
                         alt={officer.name}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        sizes="144px"
                       />
                     </div>
 
                     {/* Body */}
-                    <div className="p-5">
-                      <h3 className="font-display text-lg font-bold text-ink">
+                    <div className="px-5 pt-6 w-full flex flex-col items-center">
+                      <h3 className="font-display text-lg font-bold text-ink text-center">
                         {officer.name}
                       </h3>
 
-                      <p className="font-mono text-eyebrow uppercase tracking-wider text-gold mt-1">
+                      <p className="font-mono text-[10px] uppercase tracking-wider text-gold mt-1.5 text-center">
                         {officer.role}
                       </p>
 
-                      <div className="mt-4 space-y-2 text-sm text-slate">
+                      <div className="mt-5 space-y-2 text-sm text-slate w-full flex flex-col items-center">
                         <a
                           href={`mailto:${officer.email}`}
-                          className="flex items-center gap-2 hover:text-gold transition-colors"
+                          className="inline-flex items-center gap-2 hover:text-brand-red transition-colors text-xs"
                         >
-                          <Mail className="w-4 h-4 shrink-0" />
-                          <span className="truncate">{officer.email}</span>
+                          <Mail className="w-3.5 h-3.5 shrink-0 text-gold/80" />
+                          <span className="truncate max-w-[200px]">{officer.email}</span>
                         </a>
 
                         <a
                           href={`tel:${officer.phone.replace(/\s/g, "")}`}
-                          className="flex items-center gap-2 hover:text-gold transition-colors"
+                          className="inline-flex items-center gap-2 hover:text-brand-red transition-colors text-xs"
                         >
-                          <Phone className="w-4 h-4 shrink-0" />
+                          <Phone className="w-3.5 h-3.5 shrink-0 text-gold/80" />
                           <span>{officer.phone}</span>
                         </a>
                       </div>

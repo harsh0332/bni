@@ -120,23 +120,23 @@ export function MembersClient() {
             {members.map((member, index) => (
               <Reveal key={index} delay={index * 0.05}>
                 <TiltCard className="h-full">
-                  <div className="bg-cloud rounded-card overflow-hidden shadow-card border border-line flex flex-col group cursor-default h-full">
-                    {/* Photo or Monogram */}
-                    <div className="relative h-[240px] w-full overflow-hidden">
+                  <div className="bg-cloud rounded-card overflow-hidden shadow-card border border-line flex flex-col group cursor-default h-full text-center pb-6 items-center">
+                    {/* Centered Circular Avatar */}
+                    <div className="relative w-32 h-32 rounded-full border-2 border-gold/20 mx-auto mt-8 overflow-hidden bg-white shadow-inner group-hover:border-brand-red/40 transition-colors duration-300">
                       {member.photo ? (
                         <>
                           <Image
                             src={member.photo}
                             alt={member.name}
                             fill
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            sizes="128px"
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-ink/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </>
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-brand-maroon to-brand-red flex items-center justify-center">
-                          <span className="font-display text-5xl font-bold text-white/90 select-none">
+                          <span className="font-display text-4xl font-bold text-white/90 select-none">
                             {getInitials(member.name)}
                           </span>
                         </div>
@@ -144,8 +144,8 @@ export function MembersClient() {
                     </div>
 
                     {/* Body */}
-                    <div className="p-6 text-left flex-grow flex flex-col justify-between">
-                      <div>
+                    <div className="px-5 pt-6 text-center flex-grow flex flex-col justify-between items-center w-full">
+                      <div className="flex flex-col items-center">
                         <h3 className="font-display font-bold text-lg text-ink mb-2">
                           {member.name}
                         </h3>
@@ -153,7 +153,7 @@ export function MembersClient() {
                           {member.classification}
                         </span>
                       </div>
-                      <span className="font-mono text-[10px] text-slate/50 tracking-wider uppercase mt-5 block">
+                      <span className="font-mono text-[10px] text-slate/40 tracking-wider uppercase mt-5 block">
                         BNI Dreamers Indore
                       </span>
                     </div>

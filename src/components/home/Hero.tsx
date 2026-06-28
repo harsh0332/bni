@@ -254,7 +254,7 @@ export function Hero() {
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ delay: 0.95, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute bottom-1 left-0 w-full h-[3px] bg-gold origin-left rounded"
+                  className="absolute bottom-[-6px] left-0 w-full h-[3px] bg-gold origin-left rounded"
                 />
               </span>
             </h1>
