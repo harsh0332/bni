@@ -3,6 +3,8 @@
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Star } from "lucide-react";
+import Image from "next/image";
+import { ASSETS } from "@/lib/assets";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -68,23 +70,35 @@ export function Hero() {
           </div>
 
           {/* Right Column: Premium Visual Motif */}
-          <div className="lg:col-span-5 relative w-full h-[320px] sm:h-[400px] flex items-center justify-center">
+          <div className="lg:col-span-5 relative w-full h-[320px] sm:h-[400px] flex items-center justify-center group">
             
             {/* Soft backdrop blur card backing for constellation */}
             <div className="absolute inset-0 bg-gradient-to-tr from-brand-maroon/5 via-brand-red/5 to-gold/5 rounded-3xl border border-black/5 backdrop-blur-sm z-0" />
             
-            {/* Network Vector Graphics */}
-            <svg className="absolute inset-0 w-full h-full z-10 opacity-80" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+            {/* Supporting Real Image Card */}
+            <div className="absolute inset-4 sm:inset-6 rounded-2xl overflow-hidden border border-black/5 shadow-lg z-10">
+              <Image
+                src={ASSETS.heroBetterTogether}
+                alt="BNI Dreamers Indore Meeting"
+                fill
+                className="object-cover opacity-30 group-hover:opacity-45 transition-opacity duration-500"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent mix-blend-overlay" />
+            </div>
+
+            {/* Network Vector Graphics - layered over the image */}
+            <svg className="absolute inset-0 w-full h-full z-20 opacity-90" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
               {/* Constellation lines */}
-              <line x1="20%" y1="30%" x2="50%" y2="20%" stroke="#CF2030" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.4" />
-              <line x1="50%" y1="20%" x2="80%" y2="40%" stroke="#CF2030" strokeWidth="1.5" opacity="0.3" />
-              <line x1="20%" y1="30%" x2="30%" y2="70%" stroke="#CF2030" strokeWidth="1" opacity="0.25" />
-              <line x1="30%" y1="70%" x2="60%" y2="45%" stroke="#7A0D14" strokeWidth="2" opacity="0.4" />
-              <line x1="50%" y1="20%" x2="60%" y2="45%" stroke="#CF2030" strokeWidth="1.5" opacity="0.35" />
-              <line x1="60%" y1="45%" x2="80%" y2="40%" stroke="#C9A24B" strokeWidth="1" opacity="0.5" />
-              <line x1="30%" y1="70%" x2="70%" y2="75%" stroke="#CF2030" strokeWidth="1.5" strokeDasharray="5 5" opacity="0.3" />
-              <line x1="60%" y1="45%" x2="70%" y2="75%" stroke="#7A0D14" strokeWidth="2.5" opacity="0.4" />
-              <line x1="70%" y1="75%" x2="80%" y2="40%" stroke="#C9A24B" strokeWidth="1.5" opacity="0.35" />
+              <line x1="20%" y1="30%" x2="50%" y2="20%" stroke="#CF2030" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.5" />
+              <line x1="50%" y1="20%" x2="80%" y2="40%" stroke="#CF2030" strokeWidth="1.5" opacity="0.4" />
+              <line x1="20%" y1="30%" x2="30%" y2="70%" stroke="#CF2030" strokeWidth="1" opacity="0.3" />
+              <line x1="30%" y1="70%" x2="60%" y2="45%" stroke="#7A0D14" strokeWidth="2" opacity="0.5" />
+              <line x1="50%" y1="20%" x2="60%" y2="45%" stroke="#CF2030" strokeWidth="1.5" opacity="0.45" />
+              <line x1="60%" y1="45%" x2="80%" y2="40%" stroke="#C9A24B" strokeWidth="1" opacity="0.6" />
+              <line x1="30%" y1="70%" x2="70%" y2="75%" stroke="#CF2030" strokeWidth="1.5" strokeDasharray="5 5" opacity="0.4" />
+              <line x1="60%" y1="45%" x2="70%" y2="75%" stroke="#7A0D14" strokeWidth="2.5" opacity="0.5" />
+              <line x1="70%" y1="75%" x2="80%" y2="40%" stroke="#C9A24B" strokeWidth="1.5" opacity="0.45" />
 
               {/* Glowing circles */}
               {nodes.map((node) => (
@@ -96,7 +110,7 @@ export function Hero() {
                       cy={node.cy}
                       r={parseFloat(node.r) * 1.6}
                       fill={node.id % 2 === 0 ? "#C9A24B" : "#CF2030"}
-                      opacity="0.12"
+                      opacity="0.15"
                       animate={{ scale: [1, 1.25, 1] }}
                       transition={{ duration: 3.5, repeat: Infinity, delay: node.delay, ease: "easeInOut" }}
                     />
@@ -125,11 +139,11 @@ export function Hero() {
               </defs>
             </svg>
 
-            {/* Floating Trust Badge */}
+            {/* Floating Trust Badge - layered on top of SVG */}
             <motion.div
               animate={shouldReduceMotion ? {} : { y: [0, -8, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 z-20 flex items-center gap-3.5 bg-white/90 backdrop-blur-md border border-gold/30 rounded-2xl px-5 py-4 shadow-card max-w-[280px]"
+              className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 z-30 flex items-center gap-3.5 bg-white/90 backdrop-blur-md border border-gold/30 rounded-2xl px-5 py-4 shadow-card max-w-[280px]"
             >
               <div className="bg-gold/15 p-2 rounded-xl text-gold shrink-0">
                 <ShieldCheck className="h-6 w-6" />

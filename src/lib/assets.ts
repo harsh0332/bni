@@ -8,6 +8,14 @@ export const ASSETS = {
   planVisit: '/images/plan-visit.jpg',
   gettingStarted: '/images/getting-started.png',
   favicon192: '/images/favicon-192.png',
+  heroBetterTogether: '/images/hero-better-together.jpg',
+  benefitScale: '/images/benefit-scale.jpg',
+  benefitRelationships: '/images/benefit-relationships.png',
+  benefitMasterConnector: '/images/benefit-master-connector.png',
+  experienceInPersonPhoto: '/images/experience-inperson.jpg',
+  experienceOnlinePhoto: '/images/experience-online.jpg',
+  experienceHybridPhoto: '/images/experience-hybrid.jpg',
+  bannerMasterConnector: '/images/banner-master-connector.jpg',
 } as const;
 
 export type AssetKey = keyof typeof ASSETS;

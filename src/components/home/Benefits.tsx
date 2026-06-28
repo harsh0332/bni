@@ -3,6 +3,8 @@
 import React from "react";
 import { TrendingUp, Users, Handshake } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
+import { ASSETS } from "@/lib/assets";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -20,16 +22,19 @@ export function Benefits() {
       title: "Scale Your Business",
       icon: <TrendingUp className="h-6 w-6 text-brand-red" />,
       description: "Tap a network of 40+ local business owners who actively pass you warm, qualified, ready-to-buy referrals.",
+      image: ASSETS.benefitScale,
     },
     {
       title: "Build Real Relationships",
       icon: <Users className="h-6 w-6 text-brand-red" />,
       description: "Lock out your competitors. One exclusive seat per business category ensures collaborative, long-term partnerships.",
+      image: ASSETS.benefitRelationships,
     },
     {
       title: "Become a Master Connector",
       icon: <Handshake className="h-6 w-6 text-brand-red" />,
       description: "Weekly education modules, leadership roles, and presentation opportunities polish your networking and sales skills.",
+      image: ASSETS.benefitMasterConnector,
     },
   ];
 
@@ -59,8 +64,18 @@ export function Benefits() {
                 {/* Accent red corner highlight */}
                 <div className="absolute top-0 right-0 w-24 h-24 bg-brand-red/5 rounded-bl-[100px] pointer-events-none transition-transform duration-300 group-hover:scale-110" />
 
+                {/* Top Image */}
+                <div className="relative w-full h-44 mb-6 overflow-hidden rounded-xl bg-slate-50 shrink-0">
+                  <Image
+                    src={benefit.image}
+                    alt={benefit.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+
                 {/* Icon wrapper */}
-                <div className="bg-brand-red/10 p-4 rounded-2xl mb-6 relative z-10 shrink-0">
+                <div className="bg-brand-red/10 p-3.5 rounded-xl mb-5 relative z-10 shrink-0">
                   {benefit.icon}
                 </div>
 

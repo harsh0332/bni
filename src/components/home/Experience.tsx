@@ -20,17 +20,17 @@ export function Experience() {
   const cards = [
     {
       title: "In-Person",
-      src: ASSETS.experienceInPerson,
+      photo: ASSETS.experienceInPersonPhoto,
       description: "A very personal way to meet, connect and grow.",
     },
     {
       title: "Online",
-      src: ASSETS.experienceOnline,
+      photo: ASSETS.experienceOnlinePhoto,
       description: "Connect and grow conveniently from your home or office.",
     },
     {
       title: "Hybrid",
-      src: ASSETS.experienceHybrid,
+      photo: ASSETS.experienceHybridPhoto,
       description: "The best of both — meet in person and online.",
     },
   ];
@@ -58,14 +58,13 @@ export function Experience() {
                 transition={{ type: "spring", stiffness: 350, damping: 20 }}
                 className="bg-cloud p-8 rounded-card border border-black/5 shadow-sm text-center flex flex-col items-center justify-between group cursor-default"
               >
-                {/* SVG Illustration Container */}
-                <div className="relative h-32 w-32 mb-6 flex items-center justify-center bg-white rounded-full p-4 border border-black/5 shadow-inner transition-transform duration-300 group-hover:scale-105">
+                {/* Meeting Format Real Image */}
+                <div className="relative w-full h-44 mb-6 overflow-hidden rounded-xl bg-white border border-black/5 shadow-inner">
                   <Image
-                    src={card.src}
+                    src={card.photo}
                     alt={`${card.title} BNI format`}
-                    width={80}
-                    height={80}
-                    className="object-contain"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
 

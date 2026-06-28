@@ -16,13 +16,13 @@ import { Reveal } from "@/components/ui/Reveal";
 export function Testimonials() {
   const testimonials = [
     {
-      quote: "Joining BNI Dreamers Indore has structured our business acquisition strategy. The built-in trust and accountability mean we exchange warm, highly qualified referrals rather than cold leads.",
+      quote: "Your network is your net worth — and through BNI I gained more than a network: real experts in every field. BNI taught me that to be successful, you first have to be valuable.",
       name: "Atul Soni",
       role: "Launch Ambassador, BNI Indore",
       src: ASSETS.testimonialAtul,
     },
     {
-      quote: "The one seat per profession rule allows us to form strategic partnerships without competition. Our BNI membership has become the single most reliable referral engine for our company.",
+      quote: "Business is part and parcel of BNI, but the most valuable things I gained were lifelong friends and continuous learning. BNI also taught me how to build a team and a system in my business.",
       name: "Pushpendra Singh Jadon",
       role: "Director Consultant, BNI Indore",
       src: ASSETS.testimonialPushpendra,
@@ -46,13 +46,13 @@ export function Testimonials() {
             {testimonials.map((test, index) => (
               <div
                 key={index}
-                className="bg-cloud p-8 sm:p-10 rounded-card border border-black/5 flex flex-col sm:flex-row gap-6 items-start text-left hover:shadow-md transition-shadow duration-300 relative cursor-default"
+                className="bg-cloud p-8 sm:p-10 rounded-card border border-black/5 flex flex-col sm:flex-row gap-6 items-center sm:items-start text-left hover:shadow-md transition-shadow duration-300 relative cursor-default"
               >
                 {/* Quote Icon Background element */}
                 <Quote className="absolute top-6 right-6 h-12 w-12 text-brand-red opacity-5 shrink-0 pointer-events-none" />
 
-                {/* Avatar container */}
-                <div className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-2xl overflow-hidden shrink-0 border-2 border-gold/30 shadow-md">
+                {/* Avatar container - circular with red ring */}
+                <div className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-full overflow-hidden shrink-0 border-4 border-white ring-2 ring-brand-red shadow-md">
                   <Image
                     src={test.src}
                     alt={test.name}
