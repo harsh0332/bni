@@ -2,9 +2,11 @@ import React from "react";
 import { Hero } from "@/components/home/Hero";
 import { TrustStrip } from "@/components/home/TrustStrip";
 import { Intro } from "@/components/home/Intro";
+import { MeetingProcess } from "@/components/ui/MeetingProcess";
 import { Benefits } from "@/components/home/Benefits";
 import { Experience } from "@/components/home/Experience";
 import { StatsStrip } from "@/components/home/StatsStrip";
+import { MembersStrip } from "@/components/home/MembersStrip";
 import { LeadershipPreview } from "@/components/home/LeadershipPreview";
 import { Testimonials } from "@/components/home/Testimonials";
 import { OpenClassifications } from "@/components/home/OpenClassifications";
@@ -45,6 +47,9 @@ export default function Home() {
       {/* 3. Chapter overview and core values introduction */}
       <Intro />
 
+      {/* 3.5 Scroll-driven sticky meeting timeline */}
+      <MeetingProcess />
+
       {/* 4. Three main benefits cards */}
       <Benefits />
 
@@ -53,6 +58,9 @@ export default function Home() {
 
       {/* 6. Social statistics & Indian currency proof band */}
       <StatsStrip />
+
+      {/* 6.5 Category exclusivity members strip */}
+      <MembersStrip />
 
       {/* 7. Executive leadership officer teaser preview */}
       <LeadershipPreview />

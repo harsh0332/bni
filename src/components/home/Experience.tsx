@@ -6,74 +6,86 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ASSETS } from "@/lib/assets";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
-/**
- * Experience component: Displays BNI meeting options (In-Person, Online, Hybrid)
- * utilizing vector illustration SVGs in a responsive 3-column grid layout.
- * Includes scroll target anchor ID 'experience'.
- */
 export function Experience() {
   const shouldReduceMotion = useReducedMotion();
 
   const cards = [
     {
-      title: "In-Person",
+      title: "In-Person Meetings",
+      label: "FORMAT 01 // PHYSICAL",
       photo: ASSETS.experienceInPersonPhoto,
-      description: "A very personal way to meet, connect and grow.",
+      description: "A highly personal, face-to-face environment to form deep connections and close deals locally.",
     },
     {
-      title: "Online",
+      title: "Online Sessions",
+      label: "FORMAT 02 // VIRTUAL",
       photo: ASSETS.experienceOnlinePhoto,
-      description: "Connect and grow conveniently from your home or office.",
+      description: "Convenient, high-speed virtual meetings to exchange referrals from anywhere in the world.",
     },
     {
-      title: "Hybrid",
+      title: "Hybrid Strategy",
+      label: "FORMAT 03 // INTEGRATED",
       photo: ASSETS.experienceHybridPhoto,
-      description: "The best of both — meet in person and online.",
+      description: "The absolute best of both worlds — alternate between virtual speed and physical trust-building.",
     },
   ];
 
-  const hoverAnimation = shouldReduceMotion ? {} : { y: -6, scale: 1.02 };
+  const hoverAnimation = shouldReduceMotion ? {} : { y: -8 };
 
   return (
-    <Section bg="white" id="experience">
-      <Container>
-        <Reveal>
-          <SectionHeading
-            eyebrow="Meeting Formats"
-            title="Three Ways to Experience BNI"
-            subtext="Whether in local conference rooms, digital portals, or combined formats, BNI chapters stay connected to exchange opportunities."
-            align="center"
-          />
-        </Reveal>
+    <Section bg="white" id="experience" className="border-t border-black/5 relative overflow-hidden">
+      {/* Film grain noise texture */}
+      <div className="noise-grain absolute inset-0 opacity-[0.02] pointer-events-none" />
 
-        <Reveal delay={0.15} duration={0.6} stagger staggerChildren={0.1}>
+      <Container>
+        {/* Section Header */}
+        <div className="text-left max-w-3xl mb-16">
+          <span className="font-mono text-[10px] font-bold text-gold uppercase tracking-[0.3em] block mb-4">
+            05 / THE FORMATS
+          </span>
+          <h2 className="font-display font-extrabold text-4xl sm:text-5xl text-ink leading-tight tracking-tight">
+            Three ways to experience BNI.
+          </h2>
+          <p className="text-sm sm:text-base text-slate font-sans mt-4 max-w-xl leading-relaxed">
+            Whether in local conference rooms, digital portals, or combined formats, BNI chapters stay connected to exchange high-value referrals.
+          </p>
+        </div>
+
+        {/* 3-Column Layout */}
+        <Reveal delay={0.1} duration={0.6} stagger staggerChildren={0.1}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {cards.map((card, index) => (
               <motion.div
                 key={index}
                 whileHover={hoverAnimation}
-                transition={{ type: "spring", stiffness: 350, damping: 20 }}
-                className="bg-cloud p-8 rounded-card border border-black/5 shadow-sm text-center flex flex-col items-center justify-between group cursor-default"
+                transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                className="bg-cloud p-6 rounded-card border border-black/5 shadow-soft flex flex-col justify-between group cursor-default relative overflow-hidden h-full"
               >
-                {/* Meeting Format Real Image */}
-                <div className="relative w-full h-44 mb-6 overflow-hidden rounded-xl bg-white border border-black/5 shadow-inner">
-                  <Image
-                    src={card.photo}
-                    alt={`${card.title} BNI format`}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-
-                {/* Content */}
                 <div>
-                  <h3 className="font-heading font-extrabold text-xl text-ink mb-3">
+                  {/* Photo container with zoom on hover */}
+                  <div className="relative w-full h-56 mb-6 overflow-hidden rounded-xl bg-white border border-black/5 shadow-inner">
+                    <Image
+                      src={card.photo}
+                      alt={`${card.title} BNI format`}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  </div>
+
+                  {/* Kicker label */}
+                  <span className="font-mono text-[9px] font-bold text-gold tracking-widest block mb-2 text-left">
+                    {card.label}
+                  </span>
+
+                  {/* Title & Description */}
+                  <h3 className="font-display font-extrabold text-xl text-ink mb-3 text-left">
                     {card.title}
                   </h3>
-                  <p className="text-slate font-sans text-sm leading-relaxed max-w-xs mx-auto">
+                  
+                  <p className="text-slate font-sans text-xs sm:text-sm leading-relaxed text-left">
                     {card.description}
                   </p>
                 </div>
