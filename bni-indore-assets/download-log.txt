@@ -1,0 +1,82 @@
+[page ] https://bni-indore.in/en-IN/index
+[page ] https://bni-indore.in/en-IN/about
+[page ] https://bni-indore.in/en-IN/howtojoin
+[page ] https://bni-indore.in/en-IN/findachapter
+[page ] https://bni-indore.in/en-IN/contactus
+[page ] https://bni-indore.in/en-IN/find_a_chapter
+[page ] https://bni-indore.in/en-IN/events
+[page ] https://bni-indore.in/en-IN/findamember
+[page ] https://bni-indore.in/en-IN/chaptersforming
+[page ] https://bni-indore.in/en-IN/testimonials
+[page ] https://bni-indore.in/en-IN/advancedchaptersearch
+
+Pages scanned : 11
+Media files    : 66
+Video links    : 1
+
+[saved] images/6230747b2721ab000f27b5f2_d7a5be.png
+[saved] images/60f687810b2fdf00082ce97b_033b23.png
+[saved] images/60f687814fdef721d0375340_1423a2.png
+[saved] images/61d56828a90d8f0019699470_0e549f.png
+[saved] images/61d568291678200033403f35_12d3df.png
+[saved] images/61d568299c5dd2002c62b068_227cd8.png
+[saved] images/61d568299c5dd2003d235149_34c664.png
+[saved] images/61d568299c5dd20041201111_b779fd.png
+[saved] images/61d56829a06d310025112f7c_7acefe.png
+[saved] images/61d56829a06d310349683188_d6ab66.png
+[saved] images/61d56829a90d8f000d74ba00_dd728f.png
+[saved] images/61d56829a90d8f001b7e3804_1b71d7.png
+[saved] images/61d56829bc9e25002078eeff_611d65.png
+[saved] images/61d56829bc9e25002c42ed02_f304c9.png
+[saved] images/61d5682aa06d31001433618b_055921.png
+[saved] images/61d5682aa90d8f000c51120e_8292c4.png
+[saved] images/61d5682aa90d8f1ecf49e4f1_b0e675.png
+[saved] images/61d5682abc9e2500181df995_b8f599.png
+[saved] images/61d5682abc9e25001a2e9172_01bb72.png
+[saved] images/61d5682abc9e25003626dc37_787170.png
+[saved] images/62f359f53692d1100133deb1_8709da.jpg
+[saved] images/62f359f5389b3d0010532309_041dee.jpg
+[saved] images/62f359f58a1252002c54345e_ae2f08.jpg
+[saved] images/62f359f58a1252002f7e1760_96a30d.jpg
+[saved] images/62f359f58a125205c70de18c_8de791.jpg
+[saved] images/62f359f5f884cb00222b96b2_4a136d.png
+[saved] images/62f359f5f884cb0028708790_9a40da.jpg
+[saved] images/62f359f5f884cb002d190bc3_a82c6b.jpg
+[saved] images/62f359f63692d100202de743_ec3f53.jpg
+[saved] images/62f359f63692d1002a0a8ae9_d42106.jpg
+[saved] images/62f359f63692d100326e3345_3b8e1f.png
+[saved] images/62f359f6389b3d002e251819_0b6e6c.jpg
+[saved] images/62f359f6f884cb002075d16d_f2f038.png
+[saved] images/ajax-loader_16e705.gif
+[saved] images/banner-foundation_af3389.jpg
+[saved] images/banner-podcast_91362b.jpg
+[saved] images/banner_bniuniversity_15307d.jpg
+[saved] images/banner_connect_findachapter_ec44ab.jpg
+[saved] images/favicon_68bc01.ico
+[saved] images/favicon_132d33.png
+[saved] images/icon-114x114_e557fd.png
+[saved] images/icon-120x120_72fa90.png
+[saved] images/icon-128x128_d20356.png
+[saved] images/icon-144x144_18ceea.png
+[saved] images/icon-152x152_9fedfb.png
+[saved] images/icon-16x16_8a449e.png
+[saved] images/icon-180x180_212016.png
+[saved] images/icon-192x192_b104b2.png
+[saved] images/icon-32x32_0a21b9.png
+[saved] images/icon-36x36_bf4efd.png
+[saved] images/icon-48x48_6cd43a.png
+[saved] images/icon-57x57_9de489.png
+[saved] images/icon-60x60_857be4.png
+[saved] images/icon-72x72_253f8e.png
+[saved] images/icon-76x76_b14f8e.png
+[saved] images/icon-96x96_791dea.png
+[saved] images/gettingstarted-image_d6f31a.png
+[saved] images/innerpage_banners_9519f2.jpg
+[saved] images/planyourvisit_2f00a7.jpg
+[saved] images/testimonial-001_f42626.jpg
+[saved] images/testimonial-002_c9ef90.jpg
+[saved] images/leg-hybrid-grey_3b1283.svg
+[saved] images/leg-hybrid_1732d9.svg
+[saved] images/leg-inperson-grey_57115f.svg
+[saved] images/leg-online-grey_9302aa.svg
+[saved] other/622ad606a85c4900332b699d_b913be.bin
