@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion, Variants } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
@@ -14,19 +14,16 @@ const NAV_ITEMS = [
   { label: "Leadership", href: "/leadership" },
   { label: "Meetings", href: "/meetings" },
   { label: "Members", href: "/members" },
-  { label: "Join", href: "/join" },
+  { label: "Join Us", href: "/join" },
 ];
 
-/**
- * Sticky Header component that transitions from transparent to solid white upon scrolling.
- * Features a custom wordmark lockup, responsive desktop/mobile navigation, and accessibility support.
- */
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const shouldReduceMotion = useReducedMotion();
 
-  // Scroll handler for background state transition
+  // Scroll detection to morph header background styles
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
@@ -37,13 +34,12 @@ export function Header() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    // Run once on mount in case page is already scrolled
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Body scroll locking when mobile menu is active
+  // Lock scrolling when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -55,141 +51,180 @@ export function Header() {
     };
   }, [isMobileMenuOpen]);
 
-  // Close mobile menu on navigate
+  // Autoclose menu on page navigation
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
+  // Stagger variants for mobile links
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.15,
+      },
+    },
+  };
+
+  const linkVariants: Variants = {
+    hidden: { opacity: 0, y: 35, rotate: 1 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotate: 0,
+      transition: {
+        duration: 0.65,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
+
   return (
     <>
       <header
-        className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-black/5 py-4"
+            ? "bg-[#FAF8F5]/80 backdrop-blur-md border-b border-black/5 shadow-soft py-3"
             : "bg-transparent py-6"
         }`}
       >
         <Container className="flex items-center justify-between">
-          {/* Typographic Logo Lockup */}
+          {/* Refined logo lockup */}
           <Link
             href="/"
-            className="flex flex-col group leading-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red rounded-lg p-1"
+            className="flex flex-col group leading-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold rounded p-0.5 relative z-50"
             aria-label="BNI Dreamers Indore Home"
           >
-            <div className="flex items-center gap-1.5">
-              <span className="font-heading font-extrabold text-2xl tracking-tighter text-brand-red transition-colors duration-200">
+            <div className="flex items-end gap-1">
+              <span className="font-display font-extrabold text-2xl tracking-tight text-brand-red group-hover:scale-[1.02] transition-transform duration-300">
                 BNI
               </span>
-              <span className="bg-gold/10 text-gold text-[9px] font-extrabold px-1.5 py-0.5 rounded-full tracking-wider">
+              <span className="font-mono text-[8px] font-extrabold tracking-widest text-gold pb-1 select-none">
                 INDORE
               </span>
             </div>
-            <span className="font-heading font-bold text-[10px] tracking-[0.22em] text-ink mt-0.5 uppercase transition-colors duration-200">
+            <span className="font-mono text-[9px] font-bold tracking-[0.25em] text-ink mt-0.5 uppercase opacity-85">
               DREAMERS
             </span>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="font-sans font-medium text-sm text-slate hover:text-brand-red transition-colors relative py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2 rounded-md"
-              >
-                {item.label}
-              </Link>
-            ))}
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8 relative z-50">
+            {NAV_ITEMS.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={`font-sans text-[13px] font-medium tracking-wide uppercase relative py-1 group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold rounded transition-colors duration-300 ${
+                    isActive ? "text-brand-red" : "text-slate hover:text-brand-red"
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  
+                  {/* Animated hover line underline */}
+                  {!isActive && (
+                    <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-gold scale-x-0 origin-left transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100" />
+                  )}
+                  
+                  {/* Active route underline */}
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeHeaderUnderline"
+                      className="absolute bottom-0 left-0 w-full h-[1.5px] bg-brand-red"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* Desktop Actions */}
-          <div className="hidden md:block">
-            <Button href="/join" variant="primary" size="sm">
+          {/* Desktop CTA */}
+          <div className="hidden md:block relative z-50">
+            <MagneticButton href="/join" variant="primary">
               Get Invited
-            </Button>
+            </MagneticButton>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Hamburguer Toggle */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden p-2 text-ink hover:text-brand-red transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red rounded-lg"
+            className="md:hidden p-2 text-ink hover:text-brand-red transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold rounded-full relative z-50"
             aria-expanded={isMobileMenuOpen}
             aria-label="Toggle Navigation Menu"
             type="button"
           >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6 text-white" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </Container>
       </header>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Full-Screen Mobile Overlay Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
-            onClick={toggleMobileMenu}
+            initial={shouldReduceMotion ? { opacity: 0 } : { clipPath: "circle(0% at 92% 5%)" }}
+            animate={shouldReduceMotion ? { opacity: 1 } : { clipPath: "circle(150% at 92% 5%)" }}
+            exit={shouldReduceMotion ? { opacity: 0 } : { clipPath: "circle(0% at 92% 5%)" }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-40 bg-ink text-white md:hidden flex flex-col justify-between p-8 pt-28 shadow-2xl"
           >
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="absolute right-0 top-0 bottom-0 w-full max-w-[320px] bg-white p-6 shadow-2xl flex flex-col justify-between"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div>
-                {/* Header within Mobile Menu Drawer */}
-                <div className="flex items-center justify-between pb-6 border-b border-black/5">
-                  <div className="flex flex-col leading-none">
-                    <div className="flex items-center gap-1.5">
-                      <span className="font-heading font-extrabold text-xl tracking-tighter text-brand-red">
-                        BNI
-                      </span>
-                      <span className="bg-gold/10 text-gold text-[8px] font-extrabold px-1.5 py-0.5 rounded-full tracking-wider">
-                        INDORE
-                      </span>
-                    </div>
-                    <span className="font-heading font-bold text-[9px] tracking-[0.2em] text-ink mt-0.5 uppercase">
-                      DREAMERS
-                    </span>
-                  </div>
-                  <button
-                    onClick={toggleMobileMenu}
-                    className="p-2 text-ink hover:text-brand-red transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red rounded-lg"
-                    aria-label="Close Menu"
-                    type="button"
-                  >
-                    <X className="h-6 w-6" />
-                  </button>
-                </div>
+            {/* Film grain noise overlay on mobile menu background */}
+            <div className="noise-overlay opacity-[0.04]" aria-hidden="true" />
 
-                {/* Mobile Links */}
-                <nav className="flex flex-col gap-6 py-8">
-                  {NAV_ITEMS.map((item) => (
+            <motion.nav
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-col gap-5 text-left"
+            >
+              {NAV_ITEMS.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <motion.div key={item.label} variants={linkVariants}>
                     <Link
-                      key={item.label}
                       href={item.href}
-                      className="font-sans font-semibold text-lg text-ink hover:text-brand-red transition-colors py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red rounded-md"
+                      className={`font-display font-extrabold text-4xl sm:text-5xl transition-colors block py-1.5 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold rounded ${
+                        isActive ? "text-brand-red" : "text-white hover:text-brand-red"
+                      }`}
                     >
                       {item.label}
                     </Link>
-                  ))}
-                </nav>
-              </div>
+                  </motion.div>
+                );
+              })}
+            </motion.nav>
 
-              {/* Mobile CTA */}
-              <div className="pt-6 border-t border-black/5">
-                <Button href="/join" variant="primary" size="lg" className="w-full">
-                  Get Invited
-                </Button>
+            {/* Mobile Footer Lockup info */}
+            <div className="flex flex-col gap-6 mt-8">
+              <hr className="divider-gold w-full opacity-30" />
+              
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5">
+                <div className="text-left font-sans">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-gold block mb-1">
+                    Weekly Meeting
+                  </span>
+                  <span className="text-sm font-semibold text-slate-300 block">
+                    Every Wednesday · 7:30 AM · Hotel Sayaji
+                  </span>
+                </div>
+                
+                <div className="w-full sm:w-auto">
+                  <MagneticButton href="/join" variant="primary" className="w-full sm:w-auto text-center">
+                    Get Invited
+                  </MagneticButton>
+                </div>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
