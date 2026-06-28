@@ -10,11 +10,34 @@ import { Testimonials } from "@/components/home/Testimonials";
 import { OpenClassifications } from "@/components/home/OpenClassifications";
 import { FinalCTA } from "@/components/home/FinalCTA";
 
+import { Marquee } from "@/components/ui/Marquee";
+
+const PROFESSIONS = [
+  "Commercial Realtor",
+  "Property Management (Residential)",
+  "Modular Furniture",
+  "General Insurance",
+  "Tours & Travels",
+  "Acoustic Ceiling",
+  "Commercial Architect",
+  "Finance / Consumer Loan",
+  "Solar",
+  "Logistics Services",
+  "Graphic Design",
+  "Home Theatre",
+  "Veneer & Teak Wood",
+];
+
 export default function Home() {
   return (
     <>
       {/* 1. Full-Width Premium Hero banner */}
       <Hero />
+
+      {/* 1.5 Infinite Scrolling Professions Ticker */}
+      <div className="bg-white border-b border-black/5 py-1">
+        <Marquee items={PROFESSIONS} speed={30} />
+      </div>
 
       {/* 2. Thin highlight metrics & location strip */}
       <TrustStrip />
